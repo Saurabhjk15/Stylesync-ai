@@ -125,7 +125,7 @@ ls
    - Version: 5.5 or later
    - Copy connection string
    - Replace `<password>` with your password
-   - Example: `mongodb+srv://arfashion:YOUR_PASSWORD@cluster.mongodb.net/arfashion?retryWrites=true&w=majority`
+   -
 
 ### PostgreSQL Neon Setup (Recommended)
 
@@ -142,7 +142,7 @@ ls
 3. **Get Connection String**
    - Dashboard → Connection Details
    - Copy the connection string
-   - Example: `postgresql://user:password@ep-xxx.us-east-2.aws.neon.tech/neondb`
+   -
 
 ### Redis Upstash Setup (Optional)
 
@@ -159,7 +159,7 @@ ls
 
 3. **Get Connection URL**
    - Copy Redis URL from dashboard
-   - Example: `redis://default:password@region.upstash.io:6379`
+
 
 ---
 
@@ -233,20 +233,6 @@ code .env  # or nano .env
 Update `.env` with your actual database URLs:
 
 \`\`\`env
-NODE_ENV=development
-PORT=8080
-
-# MongoDB - Use your Atlas connection string
-MONGODB_URI=mongodb+srv://arfashion:YOUR_PASSWORD@cluster.mongodb.net/arfashion
-
-# PostgreSQL - Use your Neon connection string (or skip if not using yet)
-POSTGRESQL_URI=postgresql://user:password@ep-xxx.neon.tech/neondb
-
-# Redis - Use Upstash URL (or skip if not using yet)
-REDIS_URL=redis://default:password@region.upstash.io:6379
-
-# JWT Secret - Generate a random string
-JWT_SECRET=your-super-secret-key-min-32-characters-long
 
 # Frontend URL
 FRONTEND_URL=http://localhost:3000
