@@ -48,6 +48,7 @@ export default function BodyScan() {
     const [debugStatus, setDebugStatus] = useState("Ready to initialize.");
     const [autoCaptureTimer, setAutoCaptureTimer] = useState(null);
     const [showMlResult, setShowMlResult] = useState(true);
+    const [clockTime, setClockTime] = useState(new Date().toLocaleTimeString());
 
     const addLog = (msg) => {
         console.log(msg);
@@ -338,6 +339,12 @@ export default function BodyScan() {
         }
     }, [initPose, handleCapture]); // Added handleCapture dependency
 
+    // Live clock
+    useEffect(() => {
+        const tick = setInterval(() => setClockTime(new Date().toLocaleTimeString()), 1000);
+        return () => clearInterval(tick);
+    }, []);
+
     // Cleanup
     useEffect(() => {
         return () => {
@@ -603,7 +610,7 @@ export default function BodyScan() {
                         <div>
                             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 8 }}>
                                 <span className="label">Protocol</span>
-                                <span className="label">{new Date().toLocaleTimeString()}</span>
+                                <span className="label">{clockTime}</span>
                             </div>
                             <div style={{ padding: '12px 14px', background: 'var(--color-card)', border: '0.5px solid var(--color-border)', borderRadius: 6, fontSize: 10, lineHeight: 1.6, color: 'var(--color-muted)', height: 160, overflowY: 'auto', fontFamily: 'monospace', whiteSpace: 'pre-line' }}>
                                 {debugStatus}
