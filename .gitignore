@@ -47,5 +47,3 @@ coverage/
 *.tmp
 .cache/
 
-# ML Service (Deployed separately to Hugging Face)
-ml-service/

@@ -1,0 +1,10 @@
+train/
+__pycache__/
+*.pyc
+.env
+.DS_Store
+venv/
+env/
+*.egg-info/
+.pytest_cache/
+*.log
