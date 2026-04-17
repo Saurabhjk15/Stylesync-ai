@@ -3,8 +3,7 @@
 > Your Personal AI Stylist — Virtual Try-On & Intelligent Style Recommendations
 
 [![GitHub](https://img.shields.io/badge/GitHub-Saurabhjk15-black?logo=github)](https://github.com/Saurabhjk15)
-[![Instagram](https://img.shields.io/badge/Instagram-saurabh__jk15-E4405F?logo=instagram)](https://instagram.com/saurabh_jk15)
-[![X](https://img.shields.io/badge/X-Bose13Jk-000000?logo=x)](https://x.com/Bose13Jk)
+
 
 ## 📋 Project Overview
 
@@ -170,8 +169,7 @@ MIT License — free to use, modify, and distribute.
 
 - **Email:** [saurabhjk6376@gmail.com](mailto:saurabhjk6376@gmail.com)
 - **GitHub:** [@Saurabhjk15](https://github.com/Saurabhjk15)
-- **Instagram:** [@saurabh_jk15](https://instagram.com/saurabh_jk15)
-- **X:** [@Bose13Jk](https://x.com/Bose13Jk)
+-
 
 ---
 
