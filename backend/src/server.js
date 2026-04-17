@@ -33,6 +33,7 @@ const allowedOrigins = [
   'http://localhost:5174',
   'https://ar-fashion-advisor.vercel.app',
   'https://stylesync-fashion.vercel.app',
+  'https://stylesync-ai-zzuw.onrender.com',
   ...(process.env.FRONTEND_URL ? process.env.FRONTEND_URL.split(',') : [])
 ];
 
