@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = import.meta.env.VITE_API_URL || 'https://ar-fashion-backend.onrender.com/api';
+const API_URL = import.meta.env.VITE_API_URL || 'https://ar-fashion-advisor.onrender.com/api';
 console.log("🔌 API_URL Configured as:", API_URL);
 
 const api = axios.create({
