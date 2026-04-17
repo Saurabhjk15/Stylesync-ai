@@ -216,13 +216,22 @@ export default function CPVTONTryOn() {
         setGarmentOverride(null);
     };
 
-    const downloadResult = () => {
+    const downloadResult = async () => {
         if (!tryOnResult) return;
-        const link = document.createElement('a');
-        link.download = `stylesync-cpvton-${Date.now()}.jpg`;
-        link.href = tryOnResult;
-        link.click();
-        toast.success('Image saved!', { icon: '💾' });
+        try {
+            const res  = await fetch(tryOnResult);
+            const blob = await res.blob();
+            const ext  = blob.type === 'image/png' ? 'png' : 'jpg';
+            const url  = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.download = `stylesync-tryon-${Date.now()}.${ext}`;
+            link.href = url;
+            link.click();
+            setTimeout(() => URL.revokeObjectURL(url), 1000);
+            toast.success('Image saved!', { icon: '💾' });
+        } catch {
+            window.open(tryOnResult, '_blank');
+        }
     };
 
     const currentGarmentImg = garmentOverride || product?.imageUrl || product?.image;
