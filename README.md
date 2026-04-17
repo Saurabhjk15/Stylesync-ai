@@ -1,232 +1,178 @@
-# AR Fashion Advisor
+# StyleSync AI
 
-> Virtual Try-On & Style Recommendation System using AI and AR
+> Your Personal AI Stylist — Virtual Try-On & Intelligent Style Recommendations
+
+[![GitHub](https://img.shields.io/badge/GitHub-Saurabhjk15-black?logo=github)](https://github.com/Saurabhjk15)
+[![Instagram](https://img.shields.io/badge/Instagram-saurabh__jk15-E4405F?logo=instagram)](https://instagram.com/saurabh_jk15)
+[![X](https://img.shields.io/badge/X-Bose13Jk-000000?logo=x)](https://x.com/Bose13Jk)
 
 ## 📋 Project Overview
 
-A web application that helps users discover clothing styles that suit their body type using computer vision, AI recommendations, and augmented reality try-on.
+StyleSync AI is a full-stack web application that combines **computer vision**, **generative AI**, and **virtual try-on** technology to give users a personalized digital wardrobe experience. It scans your body using the camera, generates a Style DNA report via Groq AI, and lets you virtually try on clothing using IDM-VTON.
 
-### Key Features
-- 🎥 **Body Scanning** - AI-powered body measurement extraction
-- 🧠 **Smart Recommendations** - Personalized outfit suggestions based on body type
-- 👗 **AR Try-On** - Real-time virtual clothing visualization
-- ❤️ **Save Favorites** - Bookmark and track liked outfits
-- 🛍️ **Shopping Integration** - Direct links to purchase items
+### ✨ Key Features
+
+- 🎥 **Body Scan** — AI-powered body measurement extraction using MediaPipe Pose
+- 🧠 **AI Stylist** — Personalized Style DNA via Groq LLaMA 3.3 70B
+- 👗 **Virtual Try-On** — IDM-VTON / LightX powered garment overlay
+- 🪞 **Closet** — Save outfits & track your try-on history
+- 📦 **Garment Upload** — Upload any clothing image to try on
+- 📬 **Contact** — Auto-reply email via Resend API
+- 🔐 **Auth** — JWT + Google OAuth with persistent session
 
 ## 🛠️ Tech Stack
 
 ### Frontend
 - React 18 + Vite
-- TailwindCSS
 - Redux Toolkit
-- MediaPipe Pose
-- Three.js (for AR)
+- MediaPipe Pose (body landmark detection)
+- Framer Motion (animations)
 - Axios
 
 ### Backend
 - Node.js + Express
-- MongoDB (user data)
-- PostgreSQL (product catalog)
-- Redis (caching)
+- MongoDB (user & product data)
 - JWT Authentication
+- Resend (email)
+- Supabase (image storage)
+
+### AI Services
+| Service | Role | Tier |
+|---|---|---|
+| Groq (LLaMA 3.3) | Style DNA generation | Free |
+| IDM-VTON (HuggingFace) | Virtual try-on | Free |
+| LightX API | Try-on fallback | Free credits |
+| Gemini 2.0 Flash | Recommendation fallback | Free |
+| Serper.dev | Clothing search | Free |
+| Remove.bg | Background removal | Free (50/mo) |
 
 ### ML Service
 - Python + Flask
-- TensorFlow
-- MediaPipe
+- MediaPipe Pose
 - OpenCV
+- Hosted on HuggingFace Spaces
 
 ## 🚀 Quick Start
 
 ### Prerequisites
-- Node.js 18+ and npm
+- Node.js 18+
 - Python 3.9+
-- MongoDB
-- PostgreSQL
-- Redis (optional but recommended)
+- MongoDB Atlas account (free)
 
 ### 1. Clone the Repository
-\`\`\`bash
-git clone https://github.com/yourusername/ar-fashion-advisor.git
-cd ar-fashion-advisor
-\`\`\`
+```bash
+git clone https://github.com/Saurabhjk15/Stylesync-ai.git
+cd Stylesync-ai
+```
 
 ### 2. Frontend Setup
-\`\`\`bash
+```bash
 cd frontend
 npm install
 cp .env.example .env
 # Edit .env with your configuration
 npm run dev
-\`\`\`
+```
 
 Frontend will run on `http://localhost:3000`
 
 ### 3. Backend Setup
-\`\`\`bash
+```bash
 cd backend
 npm install
 cp .env.example .env
-# Edit .env with your database URLs and secrets
+# Fill in your API keys (see .env.example for all required keys)
 npm run dev
-\`\`\`
+```
 
 Backend will run on `http://localhost:8080`
 
-### 4. ML Service Setup (Optional for initial development)
-\`\`\`bash
+### 4. ML Service Setup (Optional)
+```bash
 cd ml-service
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+venv\Scripts\activate      # Windows
 pip install -r requirements.txt
 python app.py
-\`\`\`
+```
 
 ML Service will run on `http://localhost:5000`
 
 ## 📁 Project Structure
 
-\`\`\`
-ar-fashion-advisor/
-├── frontend/                 # React frontend
+```
+Stylesync-ai/
+├── frontend/                    # React + Vite frontend
 │   ├── public/
+│   │   └── mediapipe/pose/      # Local MediaPipe WASM assets
+│   └── src/
+│       ├── components/
+│       │   └── common/          # Navbar, Footer, ErrorBoundary
+│       ├── pages/               # All page components
+│       │   ├── BodyScan.jsx     # Camera + pose detection
+│       │   ├── CPVTONTryOn.jsx  # AI virtual try-on
+│       │   ├── Recommendations.jsx  # Groq Style DNA
+│       │   ├── SavedOutfits.jsx # Closet + try-on history
+│       │   └── Contact.jsx      # Contact form with email
+│       ├── redux/               # Redux Toolkit slices & store
+│       ├── services/            # API service layer
+│       └── utils/               # bodyTypeUtils, helpers
+├── backend/                     # Node.js + Express API
 │   ├── src/
-│   │   ├── components/      # React components
-│   │   ├── pages/           # Page components
-│   │   ├── redux/           # State management
-│   │   ├── services/        # API services
-│   │   ├── hooks/           # Custom hooks
-│   │   └── utils/           # Utility functions
-│   ├── package.json
-│   └── vite.config.js
-├── backend/                 # Node.js API
-│   ├── src/
-│   │   ├── config/          # Configuration files
-│   │   ├── models/          # Database models
-│   │   ├── controllers/     # Route controllers
-│   │   ├── routes/          # API routes
-│   │   ├── middleware/      # Express middleware
-│   │   ├── services/        # Business logic
-│   │   └── utils/           # Utilities
-│   ├── package.json
-│   └── .env.example
-├── ml-service/              # Python ML service
-│   ├── models/              # ML models
-│   ├── utils/               # Helper functions
-│   ├── app.py               # Flask app
+│   │   ├── config/              # DB connection
+│   │   ├── controllers/         # Route controllers
+│   │   ├── middleware/          # Auth, error handling
+│   │   ├── models/              # MongoDB schemas
+│   │   ├── routes/              # API endpoints
+│   │   │   ├── aiRoutes.js      # IDM-VTON, Style DNA, search
+│   │   │   ├── contactRoute.js  # Contact form + Resend email
+│   │   │   └── mlRoutes.js      # ML service proxy
+│   │   ├── services/            # Groq, Gemini, Supabase, LightX
+│   │   └── utils/               # Logger
+│   └── .env.example             # All required env vars documented
+├── ml-service/                  # Python Flask (HuggingFace Spaces)
+│   ├── app.py
 │   └── requirements.txt
-└── docs/                    # Documentation
-\`\`\`
-
-## 🗄️ Database Setup
-
-### MongoDB
-\`\`\`bash
-# Using Docker
-docker run -d -p 27017:27017 --name mongodb mongo:latest
-
-# Or install locally from mongodb.com
-\`\`\`
-
-### PostgreSQL
-\`\`\`bash
-# Using Docker
-docker run -d -p 5432:5432 --name postgres -e POSTGRES_PASSWORD=password postgres:15
-
-# Or install locally from postgresql.org
-\`\`\`
-
-### Redis (Optional)
-\`\`\`bash
-# Using Docker
-docker run -d -p 6379:6379 --name redis redis:alpine
-
-# Or install locally from redis.io
-\`\`\`
+├── images/                      # App screenshots
+└── README.md
+```
 
 ## 🔑 Environment Variables
 
-### Frontend (.env)
-\`\`\`env
-VITE_API_URL=http://localhost:8080/api
-VITE_CLOUDINARY_CLOUD_NAME=your-cloud-name
-\`\`\`
+See `backend/.env.example` for the full list with setup instructions.
 
-### Backend (.env)
-\`\`\`env
-NODE_ENV=development
-PORT=8080
-MONGODB_URI=mongodb://localhost:27017/arfashion
-POSTGRESQL_URI=postgresql://localhost:5432/arfashion
-REDIS_URL=redis://localhost:6379
-JWT_SECRET=your-secret-key-change-this
-FRONTEND_URL=http://localhost:3000
-\`\`\`
-
-## 📚 API Documentation
-
-API docs available at `/api/docs` when server is running (coming soon)
-
-## 🧪 Testing
-
-### Frontend Tests
-\`\`\`bash
-cd frontend
-npm test
-npm run test:coverage
-\`\`\`
-
-### Backend Tests
-\`\`\`bash
-cd backend
-npm test
-\`\`\`
+Key variables:
+```env
+GROQ_API_KEY=               # Free — console.groq.com
+RESEND_API_KEY=             # Free — resend.com
+SUPABASE_URL=               # Free — supabase.com
+LIGHTX_API_KEY=             # Free credits — lightxeditor.com
+VTON_PROVIDER=huggingface   # or 'replicate'
+```
 
 ## 📦 Deployment
 
 ### Frontend (Vercel)
-\`\`\`bash
+```bash
 cd frontend
 npm run build
 vercel --prod
-\`\`\`
+```
 
-### Backend (Heroku)
-\`\`\`bash
-cd backend
-heroku create arfashion-api
-git push heroku main
-\`\`\`
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+### Backend (Render / Railway)
+Set all env vars from `.env.example` in the dashboard, then connect your GitHub repo.
 
 ## 📝 License
 
-This project is licensed under the MIT License
-
-## 👥 Team
-
-- Your Name - Full Stack Development
-- Team Member 2 - Frontend Development
-- Team Member 3 - ML Development
-
-## 🎓 Academic Project
-
-This is a college final year project for [Your College Name]
-- Course: B.Tech Computer Science
-- Year: 2025-2026
-- Guide: Prof. [Name]
+MIT License — free to use, modify, and distribute.
 
 ## 📞 Contact
 
-For questions or support, please email: your.email@example.com
+- **Email:** [saurabhjk6376@gmail.com](mailto:saurabhjk6376@gmail.com)
+- **GitHub:** [@Saurabhjk15](https://github.com/Saurabhjk15)
+- **Instagram:** [@saurabh_jk15](https://instagram.com/saurabh_jk15)
+- **X:** [@Bose13Jk](https://x.com/Bose13Jk)
 
 ---
 
-**Made with ❤️ by [Your Team Name]**
+**Made with ❤️ — StyleSync AI**
