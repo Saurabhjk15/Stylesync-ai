@@ -19,9 +19,9 @@ export const login = createAsyncThunk(
 
 export const loginWithGoogle = createAsyncThunk(
   'auth/loginWithGoogle',
-  async (credential, { rejectWithValue }) => {
+  async (payload, { rejectWithValue }) => {
     try {
-      const response = await api.post('/auth/google', { credential });
+      const response = await api.post('/auth/google', payload);
       const { token, user } = response.data.data;
       localStorage.setItem('token', token);
       return { token, user };
