@@ -96,7 +96,7 @@ export default function About() {
                             We don't just measure bodies; we understand movement, preference, and the subtle nuances that make your aesthetic unique.
                         </p>
                         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, paddingTop: 16, borderTop: '0.5px solid var(--color-border)' }}>
-                            {[{ value: '99.8%', label: 'Accuracy Rate' }, { value: '2.4M', label: 'Style Profiles' }].map(stat => (
+                            {[{ value: '3+', label: 'AI Models Integrated' }, { value: 'Free', label: 'Always Free to Use' }].map(stat => (
                                 <div key={stat.label}>
                                     <div style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: 32, fontWeight: 400, color: 'var(--color-text)', lineHeight: 1 }}>{stat.value}</div>
                                     <div className="label" style={{ marginTop: 8 }}>{stat.label}</div>

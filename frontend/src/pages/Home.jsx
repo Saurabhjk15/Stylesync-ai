@@ -53,7 +53,7 @@ const FEATURES = [
 const STATS = [
     { value: '33', label: 'Pose landmarks tracked' },
     { value: '5',  label: 'Body archetypes classified' },
-    { value: '99%', label: 'Fit accuracy rating' },
+    { value: '<60s', label: 'Scan to recommendation' },
     { value: '24/7', label: 'AI concierge access' },
 ];
 
