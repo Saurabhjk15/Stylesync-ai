@@ -399,7 +399,7 @@ export default function Recommendations() {
                         {/* Upload button + AI Try-On shortcut */}
                         <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 10, marginBottom: 24 }}>
                             <motion.button
-                                onClick={() => navigate('/ar-tryon', { state: { bodyType, skinTone, occasion, gender } })}
+                                onClick={() => navigate('/cpvton-tryon', { state: { bodyType, skinTone, occasion, gender } })}
                                 className="btn btn-primary"
                                 whileHover={{ y: -1 }}
                                 whileTap={{ scale: 0.97 }}
