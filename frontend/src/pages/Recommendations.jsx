@@ -396,8 +396,18 @@ export default function Recommendations() {
 
                     {/* ── Main: Products Grid ──────────────────────────── */}
                     <div>
-                        {/* Upload button */}
-                        <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: 24 }}>
+                        {/* Upload button + AI Try-On shortcut */}
+                        <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 10, marginBottom: 24 }}>
+                            <motion.button
+                                onClick={() => navigate('/ar-tryon', { state: { bodyType, skinTone, occasion, gender } })}
+                                className="btn btn-primary"
+                                whileHover={{ y: -1 }}
+                                whileTap={{ scale: 0.97 }}
+                                style={{ fontSize: 11, display: 'flex', alignItems: 'center', gap: 6 }}
+                            >
+                                <span className="material-icons" style={{ fontSize: 14 }}>auto_awesome</span>
+                                AI Try-On
+                            </motion.button>
                             <motion.button
                                 onClick={() => setShowUploadModal(true)}
                                 className="btn btn-ghost"
